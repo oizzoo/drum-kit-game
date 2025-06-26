@@ -1,12 +1,25 @@
 
-    for(var i=0; i<document.querySelectorAll(".drum").length; i++){
+ //Detecting button press
+ for(var i=0; i<document.querySelectorAll(".drum").length; i++){
 
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
 
-       var buttonInnerHTML = this.innerHTML;
-       
-       switch (buttonInnerHTML) {
-        case "w":
+        var buttonInnerHTML = this.innerHTML;
+        makeSound(buttonInnerHTML)
+
+    });
+}
+
+
+// Detecting keyboard press
+document.addEventListener("keydown", function(event){
+        makeSound(event.key)
+    })
+
+function makeSound(key) {
+
+        switch (key) {
+        case "W":
             var tom1 = new Audio("sounds/tom-1.mp3");
             tom1.play()
         break;
@@ -41,11 +54,10 @@
             kick.play()
         break;
 
-        default:    console.log(buttonInnerHTML);
-
-       }
-    });
-
-}
+        default: console.log(key);
+    };
+}  
 
 
+
+    
